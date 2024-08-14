@@ -1,0 +1,25 @@
+import { customFetch } from '@/lib/utils';
+import { ControllerRenderProps } from 'react-hook-form';
+import { useQuery } from 'react-query';
+
+import SelectData from '../select-data';
+
+const SelectUser = (props: ControllerRenderProps) => {
+  const { data, isLoading } = useQuery('user', customFetch('user', { method: 'GET' }));
+
+  const options = (data?.records || []).map((item: { id: string; name: string }) => ({
+    value: item.id,
+    label: item.name,
+  }))
+
+  return (
+    <SelectData
+      disabled={isLoading}
+      placeholder="Select user"
+      options={options}
+      {...props}
+    />
+  )
+}
+
+export default SelectUser
