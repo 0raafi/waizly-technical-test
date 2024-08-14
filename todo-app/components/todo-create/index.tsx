@@ -1,22 +1,27 @@
 import { PRIORITY_OPTIONS, STATUS_OPTIONS } from '@/lib/utils';
 import { zodResolver } from '@hookform/resolvers/zod';
+import { Loader2 } from 'lucide-react';
 import { useForm } from 'react-hook-form';
+import { useMutation } from 'react-query';
 import { z } from 'zod';
 
-import { Button } from '@/components/ui/button';
-import { Dialog, DialogClose, DialogContent, DialogFooter, DialogHeader, DialogTitle } from '@/components/ui/dialog';
-import { Form, FormField, FormItem, FormLabel, FormMessage } from '@/components/ui/form';
-import { Input } from '@/components/ui/input';
+import { Button } from '../ui/button';
+import { Dialog, DialogClose, DialogContent, DialogFooter, DialogHeader, DialogTitle } from '../ui/dialog';
+import { Form, FormField, FormItem, FormLabel, FormMessage } from '../ui/form';
+import { Input } from '../ui/input';
+import { useToast } from '../ui/use-toast';
 
 import SelectData from '../select-data';
 import SelectUser from '../select-user';
 
-type TodoFormProps = {
+type TodoCreateProps = {
   open: boolean
   onOpenChange: (isOpen: boolean) => void
 };
 
-const TodoForm = ({ open, onOpenChange }: TodoFormProps) => {
+const TodoCreate = ({ open, onOpenChange }: TodoCreateProps) => {
+  const { toast } = useToast()
+
   const formSchema = z.object({
     title: z.string().min(1, 'Task name is required!'),
     assign: z.string().min(1, 'Assign is required!'),
@@ -34,8 +39,42 @@ const TodoForm = ({ open, onOpenChange }: TodoFormProps) => {
     },
   })
 
+  const { mutate, isLoading } = useMutation({
+    mutationFn: (payload: any) => fetch('api/todo', { method: 'POST', body: JSON.stringify(payload) }),
+    onSuccess: async (res: any) => {
+      toast({
+        title: '✅ Success',
+        description: 'Task created successfully',
+        duration: 3000,
+      })
+
+      form.reset();
+      onOpenChange(false);
+    },
+    onError: (error: any) => {
+      toast({
+        title: '🙁 Error',
+        description: '',
+        duration: 3000,
+      })
+    }
+  })
+
+  const handleSubmit = (data: z.infer<typeof formSchema>) => {
+    mutate(data);
+  }
+
   return (
-    <Dialog open={open} onOpenChange={onOpenChange}>
+    <Dialog
+      open={open}
+      onOpenChange={(open) => {
+        if (!open) {
+          form.reset();
+        }
+
+        onOpenChange(open);
+      }}
+    >
       <DialogContent>
         <DialogHeader className="text-left">
           <DialogTitle>New Task</DialogTitle>
@@ -43,7 +82,7 @@ const TodoForm = ({ open, onOpenChange }: TodoFormProps) => {
         {open && (
           <div className="py-3">
             <Form {...form} >
-              <form onSubmit={form.handleSubmit(console.log)} className="space-y-8">
+              <form onSubmit={form.handleSubmit(handleSubmit)} className="space-y-8">
                 <FormField
                   control={form.control}
                   name="title"
@@ -104,7 +143,12 @@ const TodoForm = ({ open, onOpenChange }: TodoFormProps) => {
                   <DialogClose asChild>
                     <Button variant="outline">Cancel</Button>
                   </DialogClose>
-                  <Button type="submit">Save</Button>
+                  <Button type="submit">
+                    {isLoading && (
+                      <Loader2 className="animate-spin h-4 w-4 mr-2" />
+                    )}
+                    Save
+                  </Button>
                 </DialogFooter>
               </form>
             </Form>
@@ -115,4 +159,4 @@ const TodoForm = ({ open, onOpenChange }: TodoFormProps) => {
   )
 }
 
-export default TodoForm
+export default TodoCreate

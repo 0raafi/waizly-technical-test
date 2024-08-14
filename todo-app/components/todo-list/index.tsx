@@ -1,10 +1,12 @@
 'use client';
 
 import React, { useState } from 'react'
+import { PlusCircle } from 'lucide-react';
 
-import { Input } from '@/components/ui/input'
-import { Button } from '@/components/ui/button'
-import TodoForm from '../todo-form'
+import { Input } from '../ui/input';
+import { Button } from '../ui/button';
+
+import TodoCreate from '../todo-create'
 
 const TodoList = () => {
   const [openForm, setOpenForm] = useState(false);
@@ -15,9 +17,12 @@ const TodoList = () => {
         <div>
           <Input placeholder="Filter tasks..." />
         </div>
-        <Button variant="default" onClick={() => setOpenForm(true)}>New Task</Button>
+        <Button variant="default" onClick={() => setOpenForm(true)}>
+          <PlusCircle className="h-4 w-4 mr-2" />
+          New Task
+        </Button>
       </div>
-      <TodoForm open={openForm} onOpenChange={setOpenForm} />
+      <TodoCreate open={openForm} onOpenChange={setOpenForm} />
     </>
   )
 }

@@ -14,8 +14,7 @@ export async function GET(request: any) {
       { status: 200 }
     );
   } catch (error) {
-    console.error("Error fetching event list:", error);
-    // Return an error response if fetching the event list fails
+    console.error("Error fetching user list:", error);
     return NextResponse.error();
   }
 }
