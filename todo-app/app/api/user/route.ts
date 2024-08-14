@@ -1,9 +1,9 @@
-import { pb } from '@/lib/utils';
+import { pb } from '@/lib/config';
 import { NextResponse } from 'next/server';
 
 export async function GET(request: any) {
   try {
-    const records = await pb.collection('users').getFullList({
+    const records = await pb.collection('profiles').getFullList({
       sort: '-created',
     });
 

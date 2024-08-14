@@ -4,7 +4,7 @@ import { useQuery } from 'react-query';
 
 import SelectData from '../select-data';
 
-const SelectUser = (props: ControllerRenderProps) => {
+const SelectDataUser = (props: ControllerRenderProps) => {
   const { data, isLoading } = useQuery('user', customFetch('user', { method: 'GET' }));
 
   const options = (data?.records || []).map((item: { id: string; name: string }) => ({
@@ -22,4 +22,4 @@ const SelectUser = (props: ControllerRenderProps) => {
   )
 }
 
-export default SelectUser
+export default SelectDataUser

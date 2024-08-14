@@ -1,6 +1,9 @@
-import { type ClassValue, clsx } from "clsx"
-import { twMerge } from "tailwind-merge"
-import PocketBase from "pocketbase";
+import { type ClassValue, clsx } from 'clsx';
+import { twMerge } from 'tailwind-merge';
+import { encode } from 'querystring';
+
+let debounceTimeout: string | number | NodeJS.Timeout | undefined;
+
 
 export function cn(...inputs: ClassValue[]) {
   return twMerge(clsx(inputs))
@@ -10,34 +13,32 @@ export function customFetch(key: string, init: RequestInit | undefined) {
   return () => fetch('api/' + key, init).then(res => res.json())
 }
 
-export const pb = new PocketBase('https://todo-app-test.pockethost.io');
+export const debounce = (func: () => void, timeout: number, options?: any) => {
+  const { leading = false, trailing = true } = options || {};
+  if (debounceTimeout) {
+    if (!leading && !trailing) {
+      func();
+    }
 
-export const STATUS_OPTIONS = [
-  {
-    value: 'open',
-    label: '📂 Open'
-  },
-  {
-    value: 'in_progress',
-    label: '🚀 In Progress'
-  },
-  {
-    value: 'done',
-    label: '✅ Done'
-  },
-];
+    if (!trailing) {
+      return;
+    }
 
-export const PRIORITY_OPTIONS = [
-  {
-    value: 'low',
-    label: '⬇️ Low'
-  },
-  {
-    value: 'medium',
-    label: '⏹ Medium'
-  },
-  {
-    value: 'high',
-    label: '⬆️ High'
-  },
-];
+    clearTimeout(debounceTimeout);
+    debounceTimeout = undefined;
+  }
+
+  if (leading && !debounceTimeout) {
+    func();
+  }
+
+  debounceTimeout = setTimeout(trailing ? func : () => {
+    clearTimeout(debounceTimeout);
+    debounceTimeout = undefined;
+  }, timeout);
+};
+
+
+export const toURLSearchParams = (query: any) => {
+  return new URLSearchParams(query);
+}

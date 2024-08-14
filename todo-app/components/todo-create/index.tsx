@@ -1,4 +1,4 @@
-import { PRIORITY_OPTIONS, STATUS_OPTIONS } from '@/lib/utils';
+import { PRIORITY_OPTIONS, STATUS_OPTIONS } from '@/lib/constant';
 import { zodResolver } from '@hookform/resolvers/zod';
 import { Loader2 } from 'lucide-react';
 import { useForm } from 'react-hook-form';
@@ -12,7 +12,7 @@ import { Input } from '../ui/input';
 import { useToast } from '../ui/use-toast';
 
 import SelectData from '../select-data';
-import SelectUser from '../select-user';
+import SelectDataUser from '../select-data-user';
 
 type TodoCreateProps = {
   open: boolean
@@ -101,7 +101,7 @@ const TodoCreate = ({ open, onOpenChange }: TodoCreateProps) => {
                   render={({ field }) => (
                     <FormItem>
                       <FormLabel>Assign</FormLabel>
-                      <SelectUser {...field} />
+                      <SelectDataUser {...field} />
                       <FormMessage />
                     </FormItem>
                   )}
