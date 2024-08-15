@@ -37,7 +37,7 @@ const TodoList = () => {
   const handleOnChangeKeyword = (val: string) => {
     debounce(() => {
       setKeyword(val)
-    }, 1000);
+    }, 500);
   }
 
   return (
@@ -65,10 +65,10 @@ const TodoList = () => {
           <TableBody>
             {isLoading ? (
               <TableRow>
-                <TableCell colSpan={4} className="text-center">
-                  <div className="flex gap-2 items-center justify-center">
-                    <div className="animate-bounce text-lg">🚀</div>
-                    Loading...
+                <TableCell colSpan={5} className="text-center">
+                  <div className="flex gap-2 items-center justify-center p-2">
+                    <div className="animate-spin text-lg">⏳</div>
+                    please wait...
                   </div>
                 </TableCell>
               </TableRow>

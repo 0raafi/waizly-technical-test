@@ -46,7 +46,11 @@ const EditableColumnInput = ({ data, dataKey, label }: EditableColumnInputProps)
   return (
     <div className="flex gap-3 items-center">
       {showInput ? (
-        <Input placeholder="Input task name..." defaultValue={currentValue as string} onBlur={(e) => handleOnValueChange(e.target.value)} />
+        <Input
+          placeholder="Input task name..."
+          defaultValue={currentValue as string}
+          onBlur={(e) => handleOnValueChange(e.target.value)}
+        />
       ) : (
         <div className="font-semibold">🔖 {currentValue as string}</div>
       )}
