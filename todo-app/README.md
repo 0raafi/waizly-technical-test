@@ -1,15 +1,28 @@
+# Todo App - Waizly Test
+
 ## Getting Started
 
-First, run the development server:
+To get started with this project, follow these steps:
+
+### 1. Install Dependencies
+
+Make sure to install all the required dependencies:
+
+```bash
+npm install
+# or
+yarn install
+```
+
+### 2. Run the Development Server
+
+Once the dependencies are installed, start the development server:
 
 ```bash
 npm run dev
 # or
 yarn dev
-# or
-pnpm dev
-# or
-bun dev
-```
+````
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+### 3. Open in Browser
+Open your browser and go to http://localhost:3000 to see the result.
