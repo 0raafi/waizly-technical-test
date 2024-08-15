@@ -10,10 +10,10 @@ import { customFetch, debounce } from '../../lib/utils';
 import EditableColumnDropdown from '../editable-column-dropdown';
 import EditableColumnInput from '../editable-column-input';
 import TodoCreate from '../todo-create';
+import TodoDelete from '../todo-delete';
 import { Button } from '../ui/button';
 import { Input } from '../ui/input';
 import { Table, TableBody, TableCell, TableHead, TableHeader, TableRow } from '../ui/table';
-import TodoDelete from '../todo-delete';
 
 const TodoList = () => {
   const [openCreate, setOpenCreate] = useState(false);
@@ -46,10 +46,12 @@ const TodoList = () => {
         <div>
           <Input placeholder="🔎  Filter task name..." className="lg:w-[250px]" onChange={(e) => handleOnChangeKeyword(e.target.value)} />
         </div>
-        <Button variant="default" onClick={() => setOpenCreate(true)}>
-          <PlusCircle className="h-4 w-4 mr-2" />
-          New Task
-        </Button>
+        <div className="flex gap-2 justify-end">
+          <Button onClick={() => setOpenCreate(true)}>
+            <PlusCircle className="h-4 w-4 mr-2" />
+            New Task
+          </Button>
+        </div>
       </div>
       <div className="border rounded-lg my-4">
         <Table className="">
@@ -67,50 +69,61 @@ const TodoList = () => {
               <TableRow>
                 <TableCell colSpan={5} className="text-center">
                   <div className="flex gap-2 items-center justify-center p-2">
-                    <div className="animate-spin text-lg">⏳</div>
+                    <div className="animate-spin text-xl">⏳</div>
                     please wait...
                   </div>
                 </TableCell>
               </TableRow>
             ) : (
-              records.map((rec) => (
-                <TableRow key={rec.id}>
-                  <TableCell>
-                    <EditableColumnDropdown
-                      data={rec}
-                      dataKey="status"
-                      label="Status"
-                      options={STATUS_OPTIONS}
-                    />
-                  </TableCell>
-                  <TableCell>
-                    <EditableColumnInput
-                      data={rec}
-                      dataKey="title"
-                      label="Task Name"
-                    />
-                  </TableCell>
-                  <TableCell>
-                    <EditableColumnDropdown
-                      data={rec}
-                      dataKey="assign"
-                      label="Assign"
-                      options={assignOptions}
-                    />
-                  </TableCell>
-                  <TableCell>
-                    <EditableColumnDropdown
-                      data={rec}
-                      dataKey="priority"
-                      label="Priority"
-                      options={PRIORITY_OPTIONS}
-                    />
-                  </TableCell>
-                  <TableCell>
-                    <TodoDelete id={rec.id} onSuccess={refetch} />
+              (records.length > 0) ? (
+                records.map((rec) => (
+                  <TableRow key={rec.id}>
+                    <TableCell>
+                      <EditableColumnDropdown
+                        data={rec}
+                        dataKey="status"
+                        label="Status"
+                        options={STATUS_OPTIONS}
+                      />
+                    </TableCell>
+                    <TableCell>
+                      <EditableColumnInput
+                        data={rec}
+                        dataKey="title"
+                        label="Task Name"
+                      />
+                    </TableCell>
+                    <TableCell>
+                      <EditableColumnDropdown
+                        data={rec}
+                        dataKey="assign"
+                        label="Assign"
+                        options={assignOptions}
+                      />
+                    </TableCell>
+                    <TableCell>
+                      <EditableColumnDropdown
+                        data={rec}
+                        dataKey="priority"
+                        label="Priority"
+                        options={PRIORITY_OPTIONS}
+                      />
+                    </TableCell>
+                    <TableCell>
+                      <TodoDelete id={rec.id} onSuccess={refetch} />
+                    </TableCell>
+                  </TableRow>
+                ))
+              ) : (
+                <TableRow>
+                  <TableCell colSpan={5} className="text-center">
+                    <div className="flex gap-2 items-center justify-center p-2">
+                      <div className="text-xl">📭</div>
+                      no data
+                    </div>
                   </TableCell>
                 </TableRow>
-              ))
+              )
             )}
           </TableBody>
         </Table>
