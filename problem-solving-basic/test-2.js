@@ -5,44 +5,46 @@ const rl = readline.createInterface({
   output: process.stdout
 });
 
-const proportionCalculator = (arr) => {
-  let positiveCount = 0;
-  let negativeCount = 0;
-  let zeroCount = 0;
-  const total = arr.length;
+const plusMinus = (arr) => {
+  let zero = 0;
+  let neg = 0;
+  let pos = 0;
 
-  for (let i = 0; i < total; i++) {
-    if (arr[i] > 0) {
-      positiveCount++;
-    } else if (arr[i] < 0) {
-      negativeCount++;
+  arr.forEach((v) => {
+    if (v === 0) {
+      zero++;
+    } else if (v < 0) {
+      neg++;
     } else {
-      zeroCount++;
+      pos++;
     }
-  }
+  });
 
-  const positiveRatio = (positiveCount / total).toFixed(6);
-  const negativeRatio = (negativeCount / total).toFixed(6);
-  const zeroRatio = (zeroCount / total).toFixed(6);
+  const count = arr.length;
+  const posratio = pos / count;
+  const negratio = neg / count;
+  const zeroratio = zero / count;
 
   console.log('Output : ');
-  console.log(positiveRatio);
-  console.log(negativeRatio);
-  console.log(zeroRatio);
-}
+  console.log(posratio.toFixed(6));
+  console.log(negratio.toFixed(6));
+  console.log(zeroratio.toFixed(6));
+};
 
-rl.question('👨🏻‍💻 Please enter the size of the array followed by the space-separated integers: ', (input) => {
-  const inputs = input.split(' ');
-  const n = parseInt(inputs[0]);
-  const arr = inputs.slice(1).map(Number);
+rl.question('👨🏻‍💻 Please enter the size of the array (n): ', (sizeInput) => {
+  const n = parseInt(sizeInput, 10);
 
-  if (arr.length !== n) {
-    console.log(`❌ The array size doesn't match the number of elements entered.`);
-  } else {
-    console.log('Input : ', input);
-    proportionCalculator(arr);
-  }
+  rl.question('👨🏻‍💻 Please enter space-separated integers: ', (input) => {
+    const arr = input.split(' ').map(Number);
 
-  rl.close();
+    if (arr.length !== n) {
+      console.log('❌ The number of integers does not match the size of the array.');
+    } else {
+      console.log('The size of the array : ', sizeInput);
+      console.log('Input : ', input);
+      plusMinus(arr);
+    }
+
+    rl.close();
+  });
 });
-

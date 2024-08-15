@@ -26,11 +26,11 @@ const minMaxSumCalculator = (arr) => {
   console.log('Output : ', minSum, maxSum);
 }
 
-rl.question('👨🏻‍💻 Please enter five space-separated integers: ', (input) => {
+rl.question('👨🏻‍💻 Please enter five space-separated integers (e.g., 1 2 3 4 5): ', (input) => {
   const arr = input.split(' ').map(Number);
 
   if (arr.length !== 5) {
-    console.log('❌ Please enter exactly five integers. Example: 1 2 3 4 5');
+    console.log('❌ Please enter exactly five integers.');
   } else {
     console.log('Input : ', input);
     minMaxSumCalculator(arr);
