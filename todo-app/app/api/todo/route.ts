@@ -47,3 +47,15 @@ export async function PATCH(request: NextRequest) {
     return NextResponse.error();
   }
 }
+
+export async function DELETE(request: NextRequest) {
+  try {
+    const data = await request.json();
+    const record = await pb.collection('todos').delete(data.id);
+
+    return NextResponse.json(record, { status: 200 });
+  } catch (error) {
+    console.error("Error mutate patch todo:", error);
+    return NextResponse.error();
+  }
+}

@@ -45,7 +45,7 @@ const TodoCreate = ({ open, onOpenChange, onSuccess }: TodoCreateProps) => {
     onSuccess: async (res: any) => {
       toast({
         title: '✅ Success',
-        description: 'Task created successfully',
+        description: 'Task created successfully.',
         duration: 3000,
       })
 

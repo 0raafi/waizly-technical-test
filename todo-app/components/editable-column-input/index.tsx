@@ -48,7 +48,7 @@ const EditableColumnInput = ({ data, dataKey, label }: EditableColumnInputProps)
       {showInput ? (
         <Input placeholder="Input task name..." defaultValue={currentValue as string} onBlur={(e) => handleOnValueChange(e.target.value)} />
       ) : (
-        <div className="font-semibold">{currentValue as string}</div>
+        <div className="font-semibold">🔖 {currentValue as string}</div>
       )}
       <div className="transition ease-in-out hover:scale-110 cursor-pointer flex items-center gap-1 group">
         {isLoading ?

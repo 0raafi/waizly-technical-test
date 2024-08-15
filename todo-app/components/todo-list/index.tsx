@@ -13,6 +13,7 @@ import TodoCreate from '../todo-create';
 import { Button } from '../ui/button';
 import { Input } from '../ui/input';
 import { Table, TableBody, TableCell, TableHead, TableHeader, TableRow } from '../ui/table';
+import TodoDelete from '../todo-delete';
 
 const TodoList = () => {
   const [openCreate, setOpenCreate] = useState(false);
@@ -58,6 +59,7 @@ const TodoList = () => {
               <TableHead>Task Name</TableHead>
               <TableHead>Assign</TableHead>
               <TableHead>Priority</TableHead>
+              <TableHead></TableHead>
             </TableRow>
           </TableHeader>
           <TableBody>
@@ -103,6 +105,9 @@ const TodoList = () => {
                       label="Priority"
                       options={PRIORITY_OPTIONS}
                     />
+                  </TableCell>
+                  <TableCell>
+                    <TodoDelete id={rec.id} onSuccess={refetch} />
                   </TableCell>
                 </TableRow>
               ))

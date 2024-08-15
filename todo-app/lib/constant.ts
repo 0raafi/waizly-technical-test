@@ -5,7 +5,7 @@ export const STATUS_OPTIONS = [
   },
   {
     value: 'in_progress',
-    label: '🚀  In Progress'
+    label: '⏱  In Progress'
   },
   {
     value: 'done',
@@ -16,14 +16,14 @@ export const STATUS_OPTIONS = [
 export const PRIORITY_OPTIONS = [
   {
     value: 'low',
-    label: '⬇️  Low'
+    label: '🔻  Low'
   },
   {
     value: 'medium',
-    label: '⏹  Medium'
+    label: '🔸  Medium'
   },
   {
     value: 'high',
-    label: '⬆️  High'
+    label: '🔺  High'
   },
 ];
