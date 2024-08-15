@@ -7,4 +7,4 @@ This repository contains multiple projects. Below are links to specific sections
 
 
 ## Screenshot demo app
-[Watch the video](https://drive.google.com/file/d/10CXQYXGXlwChqus7ONsu7CIaUCjZkWC9/view)
+[Watch the video](https://drive.google.com/drive/folders/1W5Jbj-7BJ2F-0z8_myfHHU3rHNz52GrP?usp=sharing)
