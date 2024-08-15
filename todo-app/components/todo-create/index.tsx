@@ -16,11 +16,12 @@ import SelectDataUser from '../select-data-user';
 
 type TodoCreateProps = {
   open: boolean
-  onOpenChange: (isOpen: boolean) => void
+  onOpenChange: (isOpen: boolean) => void;
+  onSuccess: () => void;
 };
 
-const TodoCreate = ({ open, onOpenChange }: TodoCreateProps) => {
-  const { toast } = useToast()
+const TodoCreate = ({ open, onOpenChange, onSuccess }: TodoCreateProps) => {
+  const { toast } = useToast();
 
   const formSchema = z.object({
     title: z.string().min(1, 'Task name is required!'),
@@ -50,6 +51,7 @@ const TodoCreate = ({ open, onOpenChange }: TodoCreateProps) => {
 
       form.reset();
       onOpenChange(false);
+      onSuccess();
     },
     onError: (error: any) => {
       toast({

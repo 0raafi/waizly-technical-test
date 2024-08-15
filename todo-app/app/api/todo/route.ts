@@ -31,7 +31,19 @@ export async function GET(request: NextRequest) {
       { status: 200 }
     );
   } catch (error) {
-    console.error("Error fetching user list:", error);
+    console.error("Error fetching todo list:", error);
+    return NextResponse.error();
+  }
+}
+
+export async function PATCH(request: NextRequest) {
+  try {
+    const data = await request.json();
+    const record = await pb.collection('todos').update(data.id, data);
+
+    return NextResponse.json(record, { status: 200 });
+  } catch (error) {
+    console.error("Error mutate patch todo:", error);
     return NextResponse.error();
   }
 }

@@ -1,29 +1,29 @@
 export const STATUS_OPTIONS = [
   {
     value: 'open',
-    label: '📂 Open'
+    label: '📂  Open'
   },
   {
     value: 'in_progress',
-    label: '🚀 In Progress'
+    label: '🚀  In Progress'
   },
   {
     value: 'done',
-    label: '✅ Done'
+    label: '✅  Done'
   },
 ];
 
 export const PRIORITY_OPTIONS = [
   {
     value: 'low',
-    label: '⬇️ Low'
+    label: '⬇️  Low'
   },
   {
     value: 'medium',
-    label: '⏹ Medium'
+    label: '⏹  Medium'
   },
   {
     value: 'high',
-    label: '⬆️ High'
+    label: '⬆️  High'
   },
 ];

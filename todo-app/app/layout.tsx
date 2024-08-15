@@ -1,12 +1,13 @@
-import { cn } from '@/lib/utils';
 import type { Metadata } from 'next';
 import { Inter } from 'next/font/google';
+
+import { cn } from '../lib/utils';
 
 import Providers from '../components/Providers';
 
 import './globals.css';
 
-const inter = Inter({ subsets: ["latin"] });
+const inter = Inter({ subsets: ['latin'] });
 
 export const metadata: Metadata = {
   title: '✅ Todo App - Waizly Test',

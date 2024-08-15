@@ -10,7 +10,7 @@ const SelectDataUser = (props: ControllerRenderProps) => {
   const options = (data?.records || []).map((item: { id: string; name: string }) => ({
     value: item.id,
     label: item.name,
-  }))
+  }));
 
   return (
     <SelectData
