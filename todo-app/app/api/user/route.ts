@@ -14,7 +14,7 @@ export async function GET() {
       { status: 200 }
     );
   } catch (error) {
-    console.error("Error fetching user list:", error);
+    console.error('Error fetching user list:', error);
     return NextResponse.error();
   }
 }
