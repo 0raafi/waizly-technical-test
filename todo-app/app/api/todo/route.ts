@@ -15,12 +15,33 @@ export async function POST(request: NextRequest) {
 
 export async function GET(request: NextRequest) {
   try {
-    const url = new URL(request.url)
-    const keyword = url.searchParams.get('keyword')
+    const url = new URL(request.url);
+    const keyword = url.searchParams.get('keyword');
+    const status = url.searchParams.get('status');
+    const priority = url.searchParams.get('priority');
+    const assign = url.searchParams.get('assign');
+
+    let filterString = '';
+
+    if (keyword) {
+      filterString += `title~'${keyword}'`;
+    }
+
+    if (status) {
+      filterString += filterString ? `&& status='${status}'` : `status='${status}'`;
+    }
+
+    if (priority) {
+      filterString += filterString ? `&& priority='${priority}'` : `priority='${priority}'`;
+    }
+
+    if (assign) {
+      filterString += filterString ? `&& assign='${assign}'` : `assign='${assign}'`;
+    }
 
     const records = await pb.collection('todos').getFullList({
       sort: '-created',
-      filter: `title~'${keyword}'`,
+      filter: filterString,
       expand: 'assign',
     });
 
