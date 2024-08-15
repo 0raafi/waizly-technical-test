@@ -4,16 +4,16 @@ import { PlusCircle } from 'lucide-react';
 import { useState } from 'react';
 import { useQuery } from 'react-query';
 
-import { PRIORITY_OPTIONS, STATUS_OPTIONS } from '../../lib/constant';
-import { customFetch, debounce } from '../../lib/utils';
+import { PRIORITY_OPTIONS, STATUS_OPTIONS } from '../lib/constant';
+import { customFetch, debounce } from '../lib/utils';
 
-import EditableColumnDropdown from '../editable-column-dropdown';
-import EditableColumnInput from '../editable-column-input';
-import TodoCreate from '../todo-create';
-import TodoDelete from '../todo-delete';
-import { Button } from '../ui/button';
-import { Input } from '../ui/input';
-import { Table, TableBody, TableCell, TableHead, TableHeader, TableRow } from '../ui/table';
+import EditableColumnDropdown from './editable-column-dropdown';
+import EditableColumnInput from './editable-column-input';
+import TodoCreate from './todo-create';
+import TodoDelete from './todo-delete';
+import { Button } from './ui/button';
+import { Input } from './ui/input';
+import { Table, TableBody, TableCell, TableHead, TableHeader, TableRow } from './ui/table';
 
 const TodoList = () => {
   const [openCreate, setOpenCreate] = useState(false);

@@ -1,7 +1,7 @@
 import { ControllerRenderProps } from 'react-hook-form';
 
-import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue, } from '../ui/select';
-import { FormControl } from '../ui/form';
+import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue, } from './ui/select';
+import { FormControl } from './ui/form';
 
 type ItemType = {
   value: string;

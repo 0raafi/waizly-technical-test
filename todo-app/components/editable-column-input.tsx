@@ -2,8 +2,8 @@ import { Check, Loader2, PencilLine } from 'lucide-react';
 import { useState } from 'react';
 import { useMutation } from 'react-query';
 
-import { cn } from '../../lib/utils';
-import { Input } from '../ui/input';
+import { cn } from '../lib/utils';
+import { Input } from './ui/input';
 
 type EditableColumnInputProps = {
   data: Todo,

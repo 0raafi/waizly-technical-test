@@ -2,7 +2,7 @@ import { customFetch } from '@/lib/utils';
 import { ControllerRenderProps } from 'react-hook-form';
 import { useQuery } from 'react-query';
 
-import SelectData from '../select-data';
+import SelectData from './select-data';
 
 const SelectDataUser = (props: ControllerRenderProps) => {
   const { data, isLoading } = useQuery('user', customFetch('user', { method: 'GET' }));

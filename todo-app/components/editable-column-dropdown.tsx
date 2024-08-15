@@ -2,7 +2,7 @@ import { ArrowDownCircle, Check, Loader2 } from 'lucide-react';
 import { useMemo, useState } from 'react';
 import { useMutation } from 'react-query';
 
-import { cn } from '../../lib/utils';
+import { cn } from '../lib/utils';
 
 import {
   DropdownMenu,
@@ -12,7 +12,7 @@ import {
   DropdownMenuRadioItem,
   DropdownMenuSeparator,
   DropdownMenuTrigger
-} from '../ui/dropdown-menu';
+} from './ui/dropdown-menu';
 
 type EditableColumnDropdownProps = {
   data: Todo,

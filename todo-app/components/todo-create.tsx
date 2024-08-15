@@ -5,14 +5,14 @@ import { useForm } from 'react-hook-form';
 import { useMutation } from 'react-query';
 import { z } from 'zod';
 
-import { Button } from '../ui/button';
-import { Dialog, DialogClose, DialogContent, DialogFooter, DialogHeader, DialogTitle } from '../ui/dialog';
-import { Form, FormField, FormItem, FormLabel, FormMessage } from '../ui/form';
-import { Input } from '../ui/input';
-import { useToast } from '../ui/use-toast';
+import { Button } from './ui/button';
+import { Dialog, DialogClose, DialogContent, DialogFooter, DialogHeader, DialogTitle } from './ui/dialog';
+import { Form, FormField, FormItem, FormLabel, FormMessage } from './ui/form';
+import { Input } from './ui/input';
+import { useToast } from './ui/use-toast';
 
-import SelectData from '../select-data';
-import SelectDataUser from '../select-data-user';
+import SelectData from './select-data';
+import SelectDataUser from './select-data-user';
 
 type TodoCreateProps = {
   open: boolean

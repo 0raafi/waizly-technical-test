@@ -11,9 +11,9 @@ import {
   AlertDialogHeader,
   AlertDialogTitle,
   AlertDialogTrigger
-} from '../ui/alert-dialog';
-import { Button } from '../ui/button';
-import { useToast } from '../ui/use-toast';
+} from './ui/alert-dialog';
+import { Button } from './ui/button';
+import { useToast } from './ui/use-toast';
 
 type TodoDeleteProps = {
   id: string;
