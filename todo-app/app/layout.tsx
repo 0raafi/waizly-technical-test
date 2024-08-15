@@ -3,7 +3,7 @@ import { Inter } from 'next/font/google';
 
 import { cn } from '../lib/utils';
 
-import Providers from '../components/providerssss';
+import Providers from '../components/providers';
 
 import './globals.css';
 
