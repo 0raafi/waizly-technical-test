@@ -2,7 +2,16 @@ import { Loader2, Trash2 } from 'lucide-react';
 import { useState } from 'react';
 import { useMutation } from 'react-query';
 
-import { AlertDialog, AlertDialogCancel, AlertDialogContent, AlertDialogDescription, AlertDialogFooter, AlertDialogHeader, AlertDialogTitle, AlertDialogTrigger } from '../ui/alert-dialog';
+import {
+  AlertDialog,
+  AlertDialogCancel,
+  AlertDialogContent,
+  AlertDialogDescription,
+  AlertDialogFooter,
+  AlertDialogHeader,
+  AlertDialogTitle,
+  AlertDialogTrigger
+} from '../ui/alert-dialog';
 import { Button } from '../ui/button';
 import { useToast } from '../ui/use-toast';
 
@@ -13,7 +22,7 @@ type TodoDeleteProps = {
 
 const TodoDelete = ({ id, onSuccess }: TodoDeleteProps) => {
   const [openConfirmDelete, setOpenConfirmDelete] = useState(false);
-  const {toast} = useToast();
+  const { toast } = useToast();
   const { mutate, isLoading } = useMutation({
     mutationFn: (payload: any) => fetch('api/todo', { method: 'DELETE', body: JSON.stringify(payload) }),
     onSuccess: async (res: any) => {

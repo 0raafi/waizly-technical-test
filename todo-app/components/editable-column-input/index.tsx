@@ -1,8 +1,8 @@
-import clsx from 'clsx';
 import { Check, Loader2, PencilLine } from 'lucide-react';
 import { useState } from 'react';
 import { useMutation } from 'react-query';
 
+import { cn } from '../../lib/utils';
 import { Input } from '../ui/input';
 
 type EditableColumnInputProps = {
@@ -60,7 +60,7 @@ const EditableColumnInput = ({ data, dataKey, label }: EditableColumnInputProps)
           :
           (
             showSuccessIcon ?
-              <Check className={clsx('h-4 w-4 text-green-500 transition-transform duration-500 ease-in-out', showSuccessIcon && "scale-120")} />
+              <Check className={cn('h-4 w-4 text-green-500 transition-transform duration-500 ease-in-out', showSuccessIcon && "scale-120")} />
               :
               (!showInput && (
                 <button type="button" className="flex gap-1" onClick={() => setShowInput(true)}>

@@ -1,9 +1,18 @@
-import clsx from 'clsx';
 import { ArrowDownCircle, Check, Loader2 } from 'lucide-react';
 import { useMemo, useState } from 'react';
 import { useMutation } from 'react-query';
 
-import { DropdownMenu, DropdownMenuContent, DropdownMenuLabel, DropdownMenuRadioGroup, DropdownMenuRadioItem, DropdownMenuSeparator, DropdownMenuTrigger } from '../ui/dropdown-menu';
+import { cn } from '../../lib/utils';
+
+import {
+  DropdownMenu,
+  DropdownMenuContent,
+  DropdownMenuLabel,
+  DropdownMenuRadioGroup,
+  DropdownMenuRadioItem,
+  DropdownMenuSeparator,
+  DropdownMenuTrigger
+} from '../ui/dropdown-menu';
 
 type EditableColumnDropdownProps = {
   data: Todo,
@@ -54,7 +63,7 @@ const EditableColumnDropdown = ({ data, dataKey, label, options }: EditableColum
               :
               (
                 showSuccessIcon ?
-                  <Check className={clsx('h-4 w-4 text-green-500 transition-transform duration-500 ease-in-out', showSuccessIcon && "scale-120")} />
+                  <Check className={cn('h-4 w-4 text-green-500 transition-transform duration-500 ease-in-out', showSuccessIcon && "scale-120")} />
                   :
                   <ArrowDownCircle className="h-4 w-4 transition-transform duration-500 ease-in-out" />
               )

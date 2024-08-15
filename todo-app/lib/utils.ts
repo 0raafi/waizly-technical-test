@@ -1,6 +1,5 @@
 import { type ClassValue, clsx } from 'clsx';
 import { twMerge } from 'tailwind-merge';
-import { encode } from 'querystring';
 
 let debounceTimeout: string | number | NodeJS.Timeout | undefined;
 

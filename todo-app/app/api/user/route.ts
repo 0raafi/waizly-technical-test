@@ -1,7 +1,7 @@
 import { pb } from '@/lib/config';
 import { NextResponse } from 'next/server';
 
-export async function GET(request: any) {
+export async function GET() {
   try {
     const records = await pb.collection('profiles').getFullList({
       sort: '-created',
