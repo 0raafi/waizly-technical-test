@@ -47,6 +47,7 @@ const EditableColumnInput = ({ data, dataKey, label }: EditableColumnInputProps)
     <div className="flex gap-3 items-center">
       {showInput ? (
         <Input
+          data-testid="input-task"
           placeholder="Input task name..."
           defaultValue={currentValue as string}
           onBlur={(e) => handleOnValueChange(e.target.value)}
@@ -56,11 +57,11 @@ const EditableColumnInput = ({ data, dataKey, label }: EditableColumnInputProps)
       )}
       <div className="transition ease-in-out hover:scale-110 cursor-pointer flex items-center gap-1 group">
         {isLoading ?
-          <Loader2 className="h-4 w-4 animate-spin" />
+          <Loader2 data-testid="loader-icon" className="h-4 w-4 animate-spin" />
           :
           (
             showSuccessIcon ?
-              <Check className={cn('h-4 w-4 text-green-500 transition-transform duration-500 ease-in-out', showSuccessIcon && "scale-120")} />
+              <Check data-testid="success-update-icon" className={cn('h-4 w-4 text-green-500 transition-transform duration-500 ease-in-out', showSuccessIcon && "scale-120")} />
               :
               (!showInput && (
                 <button type="button" className="flex gap-1" onClick={() => setShowInput(true)}>
