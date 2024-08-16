@@ -1,7 +1,7 @@
-// EditableColumnInput.test.tsx
 import React from 'react';
 import { render, screen, fireEvent } from '@testing-library/react';
 import { useMutation } from 'react-query';
+
 import EditableColumnInput from '../components/editable-column-input';
 
 jest.mock('react-query', () => ({
