@@ -46,12 +46,15 @@ const EditableColumnInput = ({ data, dataKey, label }: EditableColumnInputProps)
   return (
     <div className="flex gap-3 items-center">
       {showInput ? (
-        <Input
-          data-testid="input-task"
-          placeholder="Input task name..."
-          defaultValue={currentValue as string}
-          onBlur={(e) => handleOnValueChange(e.target.value)}
-        />
+        <div className="flex flex-col gap-2">
+          <Input
+            data-testid="input-task"
+            placeholder="Input task name..."
+            defaultValue={currentValue as string}
+            onBlur={(e) => handleOnValueChange(e.target.value)}
+          />
+          <span className="duration-300 ease-in-out text-xs opacity-60">Change task name, value will be updated automatically when you click outside the input field.</span>
+        </div>
       ) : (
         <div className="font-semibold">🔖 {currentValue as string}</div>
       )}
