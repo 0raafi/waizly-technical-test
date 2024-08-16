@@ -14,6 +14,7 @@ const SelectDataUser = (props: ControllerRenderProps) => {
 
   return (
     <SelectData
+      id="assing"
       disabled={isLoading}
       placeholder={isLoading ? 'Loading...' : "Select user"}
       options={options}

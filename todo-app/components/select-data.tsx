@@ -9,17 +9,18 @@ type ItemType = {
 }
 
 type SelectDataProps = {
+  id?: string;
   placeholder?: string;
   options: ItemType[];
 } & ControllerRenderProps;
 
 const SelectData = (props: SelectDataProps) => {
-  const { options, placeholder, ...field } = props || {};
+  const { options, placeholder, id, ...field } = props || {};
 
   return (
     <Select onValueChange={field.onChange} defaultValue={field.value}>
       <FormControl>
-        <SelectTrigger>
+        <SelectTrigger id={id}>
           <SelectValue placeholder={placeholder} />
         </SelectTrigger>
       </FormControl>

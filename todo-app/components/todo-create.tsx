@@ -90,8 +90,8 @@ const TodoCreate = ({ open, onOpenChange, onSuccess }: TodoCreateProps) => {
                   name="title"
                   render={({ field }) => (
                     <FormItem>
-                      <FormLabel>Task name</FormLabel>
-                      <Input placeholder="Input task name" {...field} />
+                      <FormLabel htmlFor="title">Task name</FormLabel>
+                      <Input id="title" placeholder="Input task name" {...field} />
                       <FormMessage />
                     </FormItem>
                   )}
@@ -102,7 +102,7 @@ const TodoCreate = ({ open, onOpenChange, onSuccess }: TodoCreateProps) => {
                   name="assign"
                   render={({ field }) => (
                     <FormItem>
-                      <FormLabel>Assign</FormLabel>
+                      <FormLabel htmlFor="assign">Assign</FormLabel>
                       <SelectDataUser {...field} />
                       <FormMessage />
                     </FormItem>
@@ -114,8 +114,9 @@ const TodoCreate = ({ open, onOpenChange, onSuccess }: TodoCreateProps) => {
                   name="priority"
                   render={({ field }) => (
                     <FormItem>
-                      <FormLabel>Priority</FormLabel>
+                      <FormLabel htmlFor="priority">Priority</FormLabel>
                       <SelectData
+                        id="priority"
                         placeholder="Select priority"
                         options={PRIORITY_OPTIONS}
                         {...field}
@@ -130,8 +131,9 @@ const TodoCreate = ({ open, onOpenChange, onSuccess }: TodoCreateProps) => {
                   name="status"
                   render={({ field }) => (
                     <FormItem>
-                      <FormLabel>Status</FormLabel>
+                      <FormLabel  htmlFor="status">Status</FormLabel>
                       <SelectData
+                        id="status"
                         placeholder="Select status"
                         options={STATUS_OPTIONS}
                         {...field}
@@ -145,7 +147,7 @@ const TodoCreate = ({ open, onOpenChange, onSuccess }: TodoCreateProps) => {
                   <DialogClose asChild>
                     <Button variant="outline">Cancel</Button>
                   </DialogClose>
-                  <Button type="submit">
+                  <Button type="submit" disabled={isLoading}>
                     {isLoading && (
                       <Loader2 className="animate-spin h-4 w-4 mr-2" />
                     )}

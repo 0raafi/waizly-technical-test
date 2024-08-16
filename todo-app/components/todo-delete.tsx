@@ -52,9 +52,9 @@ const TodoDelete = ({ id, onSuccess }: TodoDeleteProps) => {
         <AlertDialogFooter>
           <AlertDialogCancel>Cancel</AlertDialogCancel>
           <Button variant="destructive" type="button" onClick={() => mutate({ id })}>
-            {isLoading && (
-              <Loader2 className="animate-spin h-4 w-4 mr-2" />
-            )}
+            {isLoading ? (
+              <Loader2 className="animate-spin h-4 w-4 mr-2" data-testid="loader" />
+            ) : null}
             Ok, Delete
           </Button>
         </AlertDialogFooter>
