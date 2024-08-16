@@ -68,7 +68,7 @@ const EditableColumnDropdown = ({ data, dataKey, label, options }: EditableColum
                   <ArrowDownCircle className="h-4 w-4 transition-transform duration-500 ease-in-out" />
               )
             }
-            <span className="opacity-0 group-hover:opacity-100 transition-opacity duration-300 ease-in-out text-xs underline">Change {label}</span>
+            <span className="md:block hidden opacity-0 group-hover:opacity-100 transition-opacity duration-300 ease-in-out text-xs underline">Change {label}</span>
           </div>
         </DropdownMenuTrigger>
         <DropdownMenuContent className="w-56">

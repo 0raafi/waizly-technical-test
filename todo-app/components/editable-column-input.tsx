@@ -53,7 +53,9 @@ const EditableColumnInput = ({ data, dataKey, label }: EditableColumnInputProps)
             defaultValue={currentValue as string}
             onBlur={(e) => handleOnValueChange(e.target.value)}
           />
-          <span className="duration-300 ease-in-out text-xs opacity-60">Change task name, value will be updated automatically when you click outside the input field.</span>
+          <span className="duration-300 ease-in-out text-xs opacity-60">
+            🦖 Change task name, value will be updated automatically when you click outside the input field.
+            </span>
         </div>
       ) : (
         <div className="font-semibold">🔖 {currentValue as string}</div>
@@ -69,7 +71,7 @@ const EditableColumnInput = ({ data, dataKey, label }: EditableColumnInputProps)
               (!showInput && (
                 <button type="button" className="flex gap-1" onClick={() => setShowInput(true)}>
                   <PencilLine className="h-4 w-4 transition-transform duration-500 ease-in-out" />
-                  <span className="opacity-0 group-hover:opacity-100 transition-opacity duration-300 ease-in-out text-xs underline">Change {label}</span>
+                  <span className="md:block hidden opacity-0 group-hover:opacity-100 transition-opacity duration-300 ease-in-out text-xs underline">Change {label}</span>
                 </button>
               ))
           )
