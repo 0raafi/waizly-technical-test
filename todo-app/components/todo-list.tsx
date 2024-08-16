@@ -107,7 +107,7 @@ const TodoList = () => {
               (records.length > 0) ? (
                 records.map((rec) => (
                   <TableRow key={rec.id}>
-                    <TableCell>
+                    <TableCell className="min-w-[164px]">
                       <EditableColumnDropdown
                         data={rec}
                         dataKey="status"
@@ -115,14 +115,14 @@ const TodoList = () => {
                         options={STATUS_OPTIONS}
                       />
                     </TableCell>
-                    <TableCell>
+                    <TableCell className="min-w-[300px]">
                       <EditableColumnInput
                         data={rec}
                         dataKey="title"
                         label="Task Name"
                       />
                     </TableCell>
-                    <TableCell>
+                    <TableCell className="min-w-[150px]">
                       <EditableColumnDropdown
                         data={rec}
                         dataKey="assign"
@@ -130,7 +130,7 @@ const TodoList = () => {
                         options={assignOptions}
                       />
                     </TableCell>
-                    <TableCell>
+                    <TableCell className="min-w-[150px]">
                       <EditableColumnDropdown
                         data={rec}
                         dataKey="priority"
@@ -138,7 +138,7 @@ const TodoList = () => {
                         options={PRIORITY_OPTIONS}
                       />
                     </TableCell>
-                    <TableCell>
+                    <TableCell className="min-w-[100px] text-center">
                       <TodoDelete id={rec.id} onSuccess={refetch} />
                     </TableCell>
                   </TableRow>
